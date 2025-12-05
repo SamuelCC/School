@@ -2,9 +2,9 @@ namespace School.Models
 {
     public class NewsHeadline
     {
-        public string Title { get; set; } = string.Empty;
-        public string Url { get; set; } = string.Empty;
-        public string Source { get; set; } = string.Empty;
+        public required string Title { get; set; }
+        public required string Url { get; set; }
+        public string Source { get; set; } = "MSN";
         public DateTime PublishedDate { get; set; }
     }
 }

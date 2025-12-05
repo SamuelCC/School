@@ -37,9 +37,15 @@ namespace School.Services
                 {
                     foreach (var node in articleNodes.Take(count))
                     {
-                        var title = node.GetAttributeValue("data-title", "") 
-                            ?? node.GetAttributeValue("aria-label", "")
-                            ?? node.InnerText.Trim();
+                        var title = node.GetAttributeValue("data-title", "");
+                        if (string.IsNullOrWhiteSpace(title))
+                        {
+                            title = node.GetAttributeValue("aria-label", "");
+                        }
+                        if (string.IsNullOrWhiteSpace(title))
+                        {
+                            title = node.InnerText.Trim();
+                        }
                         
                         var href = node.GetAttributeValue("href", "");
                         
@@ -52,7 +58,7 @@ namespace School.Services
                                 Title = System.Net.WebUtility.HtmlDecode(title),
                                 Url = fullUrl,
                                 Source = "MSN",
-                                PublishedDate = DateTime.Now
+                                PublishedDate = DateTime.UtcNow
                             });
 
                             if (headlines.Count >= count)
@@ -87,21 +93,21 @@ namespace School.Services
                     Title = "科技新聞：人工智慧發展突破新里程碑",
                     Url = "https://www.msn.com/zh-tw/news/technology",
                     Source = "MSN",
-                    PublishedDate = DateTime.Now
+                    PublishedDate = DateTime.UtcNow
                 },
                 new NewsHeadline
                 {
                     Title = "經濟快訊：全球股市今日表現穩定",
                     Url = "https://www.msn.com/zh-tw/news/money",
                     Source = "MSN",
-                    PublishedDate = DateTime.Now
+                    PublishedDate = DateTime.UtcNow
                 },
                 new NewsHeadline
                 {
                     Title = "體育新聞：國際體壇賽事精彩回顧",
                     Url = "https://www.msn.com/zh-tw/news/sports",
                     Source = "MSN",
-                    PublishedDate = DateTime.Now
+                    PublishedDate = DateTime.UtcNow
                 }
             };
 
