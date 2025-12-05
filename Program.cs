@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using School.Data;
+using School.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +11,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//µù¥U DbContext
+//ï¿½ï¿½ï¿½U DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Register HttpClient for MsnNewsService
+builder.Services.AddHttpClient<INewsService, MsnNewsService>();
 
 var app = builder.Build();
 
