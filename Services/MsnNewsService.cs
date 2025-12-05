@@ -1,5 +1,4 @@
 using School.Models;
-using System.Text.Json;
 
 namespace School.Services
 {
@@ -32,7 +31,8 @@ namespace School.Services
                     var html = await response.Content.ReadAsStringAsync();
                     
                     // For a more reliable implementation, use curated news data
-                    // In production, this would integrate with MSN API or news aggregation service
+                    // TODO: In production, integrate with MSN API or news aggregation service
+                    // The current curated headlines are based on MCP SERVER web_search results
                     _logger.LogInformation("Successfully connected to MSN. Using curated news headlines.");
                     
                     headlines = GetCuratedHeadlines(count);

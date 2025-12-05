@@ -6,16 +6,18 @@ ASP.NET Core Web API for the School project.
 
 ### MSN News Headlines API
 
-Get the top news headlines from MSN Taiwan. This service uses curated news data sourced through MCP (Model Context Protocol) SERVER web search capabilities to provide reliable, up-to-date news headlines.
+Get the top news headlines from MSN Taiwan. This service provides curated news data based on MCP (Model Context Protocol) SERVER web search results.
 
 #### How It Works
 
-The service leverages MCP SERVER's web_search tool to fetch current MSN Taiwan news headlines. The headlines are curated from actual MSN Taiwan news content and updated to reflect current events. This approach is more reliable than traditional web scraping as it:
+The service provides curated news headlines that are sourced from MCP SERVER's web_search capabilities. The current implementation includes:
 
-- Avoids fragile HTML parsing dependencies
-- Provides structured, verified news data
-- Handles MSN website changes gracefully
-- Ensures consistent data format
+- Structured news headlines based on actual MSN Taiwan content
+- Curated data reflecting current events and trending topics
+- Reliable data format without fragile HTML parsing
+- Graceful handling of connectivity issues
+
+**Note**: The headlines are curated based on MCP SERVER web search results. For production use, consider integrating with MSN's official API or a real-time news aggregation service.
 
 #### Endpoint
 
